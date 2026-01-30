@@ -1,3 +1,52 @@
-[gd_scene format=3 uid="uid://d3eo86534q5at"]
+[gd_scene format=3 uid="uid://di3kcgn4m7a35"]
 
-[node name="Game" type="Node2D" unique_id=1785790619]
+[ext_resource type="PackedScene" uid="uid://cg76re3787jjk" path="res://Scenes/player.tscn" id="1_ebmjs"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_mxpfa"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_10xcd"]
+size = Vector2(20, 10.066668)
+
+[node name="Game" type="Node2D" unique_id=1433320696]
+
+[node name="Player" parent="." unique_id=1499838394 instance=ExtResource("1_ebmjs")]
+position = Vector2(55, 73)
+motion_mode = 1
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=1737939196]
+
+[node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=503072264]
+position = Vector2(-415, -298)
+physics_material_override = SubResource("PhysicsMaterial_mxpfa")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" unique_id=1668087273]
+position = Vector2(-591.00006, 303)
+scale = Vector2(60, 60)
+shape = SubResource("RectangleShape2D_10xcd")
+
+[node name="StaticBody2D2" type="StaticBody2D" parent="." unique_id=582488381]
+position = Vector2(1588, -298)
+physics_material_override = SubResource("PhysicsMaterial_mxpfa")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D2" unique_id=496777121]
+position = Vector2(-591.00006, 303)
+scale = Vector2(60, 60)
+shape = SubResource("RectangleShape2D_10xcd")
+
+[node name="StaticBody2D3" type="StaticBody2D" parent="." unique_id=701013815]
+position = Vector2(633, -900)
+physics_material_override = SubResource("PhysicsMaterial_mxpfa")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D3" unique_id=1544835862]
+position = Vector2(-591.00006, 303)
+scale = Vector2(60, 60)
+shape = SubResource("RectangleShape2D_10xcd")
+
+[node name="StaticBody2D4" type="StaticBody2D" parent="." unique_id=1824694274]
+position = Vector2(633, 301)
+physics_material_override = SubResource("PhysicsMaterial_mxpfa")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D4" unique_id=286803365]
+position = Vector2(-591.00006, 303)
+scale = Vector2(60, 60)
+shape = SubResource("RectangleShape2D_10xcd")
