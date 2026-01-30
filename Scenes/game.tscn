@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://di3kcgn4m7a35"]
 
 [ext_resource type="PackedScene" uid="uid://cg76re3787jjk" path="res://Scenes/player.tscn" id="1_ebmjs"]
+[ext_resource type="PackedScene" uid="uid://dyinydf272qmt" path="res://Scenes/npc.tscn" id="2_qxrlw"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_mxpfa"]
 
@@ -14,6 +15,10 @@ position = Vector2(55, 73)
 motion_mode = 1
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1737939196]
+
+[node name="Npc" parent="." unique_id=1502401715 instance=ExtResource("2_qxrlw")]
+motion_mode = 1
+slide_on_ceiling = false
 
 [node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=503072264]
 position = Vector2(-415, -298)
