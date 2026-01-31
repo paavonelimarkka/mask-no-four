@@ -15,9 +15,15 @@ func _ready() -> void:
 func _on_interact_area_body_entered(body: Node2D) -> void:
 	if body.is_in_group("npc"):
 		nearby_npcs.append(body)
+	if body.is_in_group("poster"):
+		print("hahaa")
+		nearby_npcs.append(body)
 
 func _on_interact_area_body_exited(body: Node2D) -> void:
 	nearby_npcs.erase(body)
+	if body.is_in_group("poster"):
+		print ("lähdin pois lärvi pois")
+		# tänne se naamataulujuttu visible
 
 func get_input():
 	var input_direction = Input.get_vector("Left", "Right", "Up", "Down")
@@ -29,7 +35,6 @@ func _physics_process(delta):
 		move_and_slide()
 
 func _process(delta):
-	print(can_move)
 	if Input.is_action_just_pressed("Interact") and nearby_npcs.size() > 0:
 		var npc = nearby_npcs[0]
 		npc.stop_movement()

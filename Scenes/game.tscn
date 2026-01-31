@@ -10,6 +10,11 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_10xcd"]
 size = Vector2(20, 10.066668)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3dryh"]
+size = Vector2(37, 39)
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_3dryh"]
+
 [node name="Game" type="Node2D" unique_id=1433320696]
 script = ExtResource("1_3dryh")
 
@@ -71,3 +76,16 @@ physics_material_override = SubResource("PhysicsMaterial_mxpfa")
 position = Vector2(-591.00006, 303)
 scale = Vector2(60, 60)
 shape = SubResource("RectangleShape2D_10xcd")
+
+[node name="FacePoster" type="StaticBody2D" parent="." unique_id=717642753 groups=["poster"]]
+position = Vector2(0, -296)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="FacePoster" unique_id=1719573575]
+shape = SubResource("RectangleShape2D_3dryh")
+
+[node name="FacePosterImage" type="TextureRect" parent="FacePoster" unique_id=1912245386]
+offset_left = -19.5
+offset_top = -19.5
+offset_right = 20.5
+offset_bottom = 20.5
+texture = SubResource("PlaceholderTexture2D_3dryh")
