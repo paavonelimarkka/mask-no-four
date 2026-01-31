@@ -15,6 +15,7 @@ func _ready() -> void:
 	# Remember where the rect started (in global coordinates)
 	await get_tree().process_frame  # ensures layout/anchors have applied
 	start_global_pos = global_position
+	find_parent("InteractionUi").visible = false # Stupid hack, don't remove
 
 func _gui_input(event: InputEvent) -> void:
 	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT:
