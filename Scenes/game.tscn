@@ -79,11 +79,12 @@ shape = SubResource("RectangleShape2D_10xcd")
 
 [node name="FacePoster" type="StaticBody2D" parent="." unique_id=717642753 groups=["poster"]]
 position = Vector2(0, -296)
+collision_layer = 3
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="FacePoster" unique_id=1719573575]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="FacePoster" unique_id=1719573575 groups=["poster"]]
 shape = SubResource("RectangleShape2D_3dryh")
 
-[node name="FacePosterImage" type="TextureRect" parent="FacePoster" unique_id=1912245386]
+[node name="FacePosterImage" type="TextureRect" parent="FacePoster" unique_id=1912245386 groups=["poster"]]
 offset_left = -19.5
 offset_top = -19.5
 offset_right = 20.5
