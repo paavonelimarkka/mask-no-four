@@ -1,0 +1,102 @@
+[gd_scene format=3 uid="uid://ddc3qeiha3o11"]
+
+[ext_resource type="Texture2D" uid="uid://dvlion3g8cp03" path="res://Assets/start.jpg" id="1_3bxa3"]
+[ext_resource type="Script" uid="uid://cw1x4r1guxn4n" path="res://Scripts/start.gd" id="1_5ogh5"]
+[ext_resource type="Script" uid="uid://c6n0j8gtbp73y" path="res://Scripts/help_text.gd" id="2_r48yj"]
+
+[node name="Start" type="Control" unique_id=1009285783]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_5ogh5")
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=212896026]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("1_3bxa3")
+
+[node name="HelpText" type="CenterContainer" parent="." unique_id=221105767]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("2_r48yj")
+
+[node name="MarginContainer" type="MarginContainer" parent="HelpText" unique_id=1108923007]
+layout_mode = 2
+theme_override_constants/margin_left = 34
+theme_override_constants/margin_top = 34
+theme_override_constants/margin_right = 34
+theme_override_constants/margin_bottom = 34
+
+[node name="ColorRect" type="ColorRect" parent="HelpText/MarginContainer" unique_id=261395329]
+layout_mode = 2
+color = Color(0.17390001, 0.37, 0.28829166, 0.83137256)
+
+[node name="MarginContainer" type="MarginContainer" parent="HelpText/MarginContainer" unique_id=1338236410]
+layout_mode = 2
+theme_override_constants/margin_left = 24
+theme_override_constants/margin_top = 24
+theme_override_constants/margin_right = 24
+theme_override_constants/margin_bottom = 24
+
+[node name="RichTextLabel" type="RichTextLabel" parent="HelpText/MarginContainer/MarginContainer" unique_id=1175505435]
+custom_minimum_size = Vector2(600, 0)
+layout_mode = 2
+theme_override_font_sizes/normal_font_size = 24
+theme_override_font_sizes/bold_font_size = 32
+bbcode_enabled = true
+text = "[b]How to play:[/b]
+1. Memorize the face of the culprit
+2. Unmask the masquerada guests
+3. Find and expose the culprit
+
+[b]Controls:[/b]
+Move with arrow or wasd keys
+Press E to stop a guest and investigate
+Use mouse to drag and unmask the guest
+Press buttons to decide the fate"
+fit_content = true
+
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=1865266277]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -40.0
+offset_right = 40.0
+grow_vertical = 0
+theme_override_constants/margin_left = 50
+theme_override_constants/margin_bottom = 25
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer" unique_id=723647899]
+layout_mode = 2
+
+[node name="Start" type="Button" parent="MarginContainer/HBoxContainer" unique_id=1100809477]
+custom_minimum_size = Vector2(124, 0)
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "Start"
+
+[node name="Help" type="Button" parent="MarginContainer/HBoxContainer" unique_id=1267965076]
+custom_minimum_size = Vector2(124, 0)
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "Help"
+
+[node name="Exit" type="Button" parent="MarginContainer/HBoxContainer" unique_id=508563575]
+custom_minimum_size = Vector2(124, 0)
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "Exit"
+
+[connection signal="pressed" from="MarginContainer/HBoxContainer/Start" to="." method="_on_start_pressed"]
+[connection signal="pressed" from="MarginContainer/HBoxContainer/Help" to="HelpText" method="_on_help_pressed"]
+[connection signal="pressed" from="MarginContainer/HBoxContainer/Exit" to="." method="_on_exit_pressed"]
