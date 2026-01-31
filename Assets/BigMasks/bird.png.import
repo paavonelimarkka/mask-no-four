@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://srg34ja8h8eo"
-path="res://.godot/imported/kala.png-89391171b6936da37214f64517a0f23e.ctex"
+uid="uid://d05jaxahted6g"
+path="res://.godot/imported/bird.png-078e929e220d34fe4f78fe13298bdc29.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/BigMasks/kala.png"
-dest_files=["res://.godot/imported/kala.png-89391171b6936da37214f64517a0f23e.ctex"]
+source_file="res://Assets/BigMasks/bird.png"
+dest_files=["res://.godot/imported/bird.png-078e929e220d34fe4f78fe13298bdc29.ctex"]
 
 [params]
 
