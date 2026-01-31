@@ -1,5 +1,7 @@
 extends CharacterBody2D
 
+signal show_ui(npc)
+
 const SPEED = 400.0
 
 var nearby_npcs: Array = []
@@ -28,3 +30,4 @@ func _process(delta):
 		print("painoin ja olis zonellaki")
 		var npc = nearby_npcs[0]
 		npc.stop_movement()
+		emit_signal("show_ui", npc)

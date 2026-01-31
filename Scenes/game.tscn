@@ -12,6 +12,17 @@ size = Vector2(20, 10.066668)
 [node name="Game" type="Node2D" unique_id=1433320696]
 
 [node name="InteractionUi" parent="." unique_id=688916730 instance=ExtResource("1_wrm1d")]
+visible = false
+z_index = 10
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = -400.0
+offset_top = -300.0
+offset_right = 400.0
+offset_bottom = 300.0
+grow_horizontal = 1
+grow_vertical = 1
 
 [node name="Player" parent="." unique_id=1499838394 instance=ExtResource("1_ebmjs")]
 motion_mode = 1
