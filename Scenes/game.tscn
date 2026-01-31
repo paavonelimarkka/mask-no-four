@@ -11,12 +11,32 @@ size = Vector2(20, 10.066668)
 [node name="Game" type="Node2D" unique_id=1433320696]
 
 [node name="Player" parent="." unique_id=1499838394 instance=ExtResource("1_ebmjs")]
-position = Vector2(55, 73)
 motion_mode = 1
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1737939196]
 
 [node name="Npc" parent="." unique_id=1502401715 instance=ExtResource("2_qxrlw")]
+position = Vector2(76, -84)
+motion_mode = 1
+slide_on_ceiling = false
+
+[node name="Npc2" parent="." unique_id=1515008331 instance=ExtResource("2_qxrlw")]
+position = Vector2(-229, -137)
+motion_mode = 1
+slide_on_ceiling = false
+
+[node name="Npc3" parent="." unique_id=1113262484 instance=ExtResource("2_qxrlw")]
+position = Vector2(158, -172)
+motion_mode = 1
+slide_on_ceiling = false
+
+[node name="Npc4" parent="." unique_id=1696017680 instance=ExtResource("2_qxrlw")]
+position = Vector2(-237, 203)
+motion_mode = 1
+slide_on_ceiling = false
+
+[node name="Npc5" parent="." unique_id=780905391 instance=ExtResource("2_qxrlw")]
+position = Vector2(222, 153)
 motion_mode = 1
 slide_on_ceiling = false
 

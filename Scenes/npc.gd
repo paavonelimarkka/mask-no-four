@@ -10,3 +10,8 @@ func _ready() -> void:
 
 func _physics_process(delta: float) -> void:
 	move_and_slide()
+
+	if get_slide_collision_count() > 0:
+		var collision = get_slide_collision(0)
+		# Reflect velocity based on collision normal
+		velocity = velocity.bounce(collision.get_normal()).normalized() * SPEED
