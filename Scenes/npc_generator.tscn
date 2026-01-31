@@ -1,0 +1,28 @@
+[gd_scene format=3 uid="uid://bv0872odn3gha"]
+
+[ext_resource type="Script" uid="uid://nhuffboik7x4" path="res://Scripts/npc_generator.gd" id="1_7vkhb"]
+[ext_resource type="PackedScene" uid="uid://dyinydf272qmt" path="res://Scenes/npc.tscn" id="2_1lide"]
+[ext_resource type="Texture2D" uid="uid://b0inkxlp84klh" path="res://Assets/Faces/hair1.png" id="3_0gxwa"]
+[ext_resource type="Texture2D" uid="uid://bxwb75fnkge81" path="res://Assets/Faces/hair2.png" id="4_uvwmv"]
+[ext_resource type="Texture2D" uid="uid://b12rxk63nhg4x" path="res://Assets/Faces/hair3.png" id="5_8ddu6"]
+[ext_resource type="Texture2D" uid="uid://jkkoma268qem" path="res://Assets/Faces/eyes1.png" id="6_31hal"]
+[ext_resource type="Texture2D" uid="uid://c4rwa2sts8ef0" path="res://Assets/Faces/eyes2.png" id="7_aj8e2"]
+[ext_resource type="Texture2D" uid="uid://bkbaobj6vn2ic" path="res://Assets/Faces/beard1.png" id="8_7arxi"]
+[ext_resource type="Texture2D" uid="uid://c3lip8bqdx400" path="res://Assets/BigMasks/dog.png" id="8_8ddu6"]
+[ext_resource type="Texture2D" uid="uid://d05jaxahted6g" path="res://Assets/BigMasks/bird.png" id="9_31hal"]
+[ext_resource type="Texture2D" uid="uid://srg34ja8h8eo" path="res://Assets/BigMasks/fish.png" id="10_aj8e2"]
+[ext_resource type="Texture2D" uid="uid://ct8c6y6o0lr36" path="res://Assets/BigMasks/raccoon.png" id="11_7arxi"]
+[ext_resource type="Texture2D" uid="uid://cv4kmlvthwbkp" path="res://Assets/SmallMasks/dog.png" id="12_7arxi"]
+[ext_resource type="Texture2D" uid="uid://cwjacmbwaqtvm" path="res://Assets/SmallMasks/racoon.png" id="13_f66tc"]
+[ext_resource type="Texture2D" uid="uid://cnrxnolokvq7c" path="res://Assets/SmallMasks/fish.png" id="14_vbaeh"]
+[ext_resource type="Texture2D" uid="uid://denknn8gr3vnt" path="res://Assets/SmallMasks/bird.png" id="15_f66tc"]
+
+[node name="NpcGenerator" type="Node2D" unique_id=920303500]
+script = ExtResource("1_7vkhb")
+max_npcs = 5
+npc_scene = ExtResource("2_1lide")
+hairs = Array[CompressedTexture2D]([ExtResource("3_0gxwa"), ExtResource("4_uvwmv"), ExtResource("5_8ddu6")])
+eyes = Array[CompressedTexture2D]([ExtResource("6_31hal"), ExtResource("7_aj8e2")])
+beards = Array[CompressedTexture2D]([ExtResource("8_7arxi")])
+big_masks = Array[CompressedTexture2D]([ExtResource("8_8ddu6"), ExtResource("11_7arxi"), ExtResource("10_aj8e2"), ExtResource("9_31hal")])
+small_masks = Array[CompressedTexture2D]([ExtResource("12_7arxi"), ExtResource("13_f66tc"), ExtResource("14_vbaeh"), ExtResource("15_f66tc")])

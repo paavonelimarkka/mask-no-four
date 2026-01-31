@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://cg76re3787jjk" path="res://Scenes/player.tscn" id="1_ebmjs"]
 [ext_resource type="PackedScene" uid="uid://cqkmxol52hgso" path="res://Scenes/interaction_ui.tscn" id="1_wrm1d"]
-[ext_resource type="PackedScene" uid="uid://dyinydf272qmt" path="res://Scenes/npc.tscn" id="2_qxrlw"]
+[ext_resource type="PackedScene" uid="uid://bv0872odn3gha" path="res://Scenes/npc_generator.tscn" id="3_3dryh"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_mxpfa"]
 
@@ -18,32 +18,9 @@ motion_mode = 1
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1737939196]
 
+[node name="NpcGenerator" parent="." unique_id=1511625558 instance=ExtResource("3_3dryh")]
+
 [node name="NPCs" type="Node" parent="." unique_id=2051232819]
-
-[node name="Npc" parent="NPCs" unique_id=1502401715 instance=ExtResource("2_qxrlw")]
-position = Vector2(76, -84)
-motion_mode = 1
-slide_on_ceiling = false
-
-[node name="Npc2" parent="NPCs" unique_id=1515008331 instance=ExtResource("2_qxrlw")]
-position = Vector2(-229, -137)
-motion_mode = 1
-slide_on_ceiling = false
-
-[node name="Npc3" parent="NPCs" unique_id=1113262484 instance=ExtResource("2_qxrlw")]
-position = Vector2(158, -172)
-motion_mode = 1
-slide_on_ceiling = false
-
-[node name="Npc4" parent="NPCs" unique_id=1696017680 instance=ExtResource("2_qxrlw")]
-position = Vector2(-237, 203)
-motion_mode = 1
-slide_on_ceiling = false
-
-[node name="Npc5" parent="NPCs" unique_id=780905391 instance=ExtResource("2_qxrlw")]
-position = Vector2(222, 153)
-motion_mode = 1
-slide_on_ceiling = false
 
 [node name="Boundaries" type="Node" parent="." unique_id=215849896]
 

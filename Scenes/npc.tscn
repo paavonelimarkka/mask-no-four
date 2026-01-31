@@ -1,23 +1,98 @@
 [gd_scene format=3 uid="uid://dyinydf272qmt"]
 
 [ext_resource type="Script" uid="uid://cptg65y4hkrds" path="res://Scripts/npc.gd" id="1_acqhf"]
-
-[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_xxsvc"]
-
-[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_g6unj"]
-size = Vector2(50, 50)
+[ext_resource type="Texture2D" uid="uid://cc1lbgy5weu3f" path="res://Assets/body.png" id="2_xxsvc"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_h1ryf"]
 
-[node name="Npc" type="CharacterBody2D" unique_id=1502401715 groups=["npc"]]
-collision_layer = 3
-script = ExtResource("1_acqhf")
+[sub_resource type="Animation" id="Animation_g6unj"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
 
-[node name="Sprite2D" type="Sprite2D" parent="." unique_id=337415709]
-material = SubResource("CanvasItemMaterial_xxsvc")
-texture = SubResource("PlaceholderTexture2D_g6unj")
+[sub_resource type="Animation" id="Animation_xxsvc"]
+resource_name = "jiggle"
+length = 1.9666667
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 1, 1.4333333, 1.9666667),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(-2, 0), Vector2(0, -8), Vector2(2, 0), Vector2(0, -8), Vector2(-2, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1, 1.9666667),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [-0.17453292519943295, 0.17453292519943295, -0.17453292519943295]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_g6unj"]
+_data = {
+&"RESET": SubResource("Animation_g6unj"),
+&"jiggle": SubResource("Animation_xxsvc")
+}
+
+[node name="Npc" type="CharacterBody2D" unique_id=1502401715 node_paths=PackedStringArray("animation_player", "sprites") groups=["npc"]]
+collision_layer = 3
+motion_mode = 1
+script = ExtResource("1_acqhf")
+animation_player = NodePath("AnimationPlayer")
+sprites = NodePath("Sprites")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1341413181]
-position = Vector2(-0.25, -0.25)
+position = Vector2(0, 10)
 scale = Vector2(2, 2)
 shape = SubResource("CircleShape2D_h1ryf")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="." unique_id=886418563]
+position = Vector2(0, -10)
+scale = Vector2(2, 2)
+shape = SubResource("CircleShape2D_h1ryf")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1132704426]
+root_node = NodePath("../Sprites")
+libraries/ = SubResource("AnimationLibrary_g6unj")
+playback_auto_capture = false
+speed_scale = 2.0
+
+[node name="Sprites" type="Node2D" parent="." unique_id=161861462]
+
+[node name="Body" type="Sprite2D" parent="Sprites" unique_id=673978803]
+position = Vector2(-1.1920929e-07, 9.000001)
+scale = Vector2(1.0000001, 1.0000001)
+texture = ExtResource("2_xxsvc")
