@@ -18,12 +18,13 @@ func _ready() -> void:
 	direction = Vector2(randf_range(-1,1), randf_range(-1,1)).normalized()
 	velocity = direction * SPEED
 	is_moving = true
-	modulate = custom_modulate
+	$Sprites/Body.modulate = Color(1, randf(), randf(), 1.0)
 	
 	var sprite := Sprite2D.new()
 	sprite.texture = small_mask
 	sprite.position = Vector2(0,-10)
 	sprite.scale = Vector2(2, 2)
+	sprite.modulate = custom_modulate
 	sprites.add_child(sprite)
 	animation_player.current_animation = "jiggle"
 	animation_player.active = true

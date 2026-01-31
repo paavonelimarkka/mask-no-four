@@ -4,17 +4,16 @@ extends Control
 @export var eyes: TextureRect
 @export var beard: TextureRect
 @export var mask: TextureRect
+var player: Node
+var last_npc: Node
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	var player = get_node("../Player")
+	player = get_node("../Player")
 	player.show_ui.connect(_on_show_ui)
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
-
 func _on_show_ui(npc: NPC):
+	last_npc = npc
 	hair.texture = npc.hair
 	eyes.texture = npc.eyes
 	beard.texture = npc.beard
@@ -24,3 +23,5 @@ func _on_show_ui(npc: NPC):
 
 func _on_close_ui_pressed() -> void:
 	visible = false
+	player.can_move = true
+	last_npc.is_moving = true
