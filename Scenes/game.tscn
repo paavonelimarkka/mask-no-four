@@ -4,8 +4,9 @@
 [ext_resource type="PackedScene" uid="uid://cg76re3787jjk" path="res://Scenes/player.tscn" id="1_ebmjs"]
 [ext_resource type="PackedScene" uid="uid://cqkmxol52hgso" path="res://Scenes/interaction_ui.tscn" id="1_wrm1d"]
 [ext_resource type="PackedScene" uid="uid://bv0872odn3gha" path="res://Scenes/npc_generator.tscn" id="3_3dryh"]
-[ext_resource type="Script" uid="uid://c0ge6v0ma18lu" path="res://Scripts/face_reveal.gd" id="5_i6g32"]
+[ext_resource type="Script" path="res://Scripts/face_reveal.gd" id="5_i6g32"]
 [ext_resource type="Texture2D" uid="uid://bm11o6hs61pj6" path="res://Assets/Faces/face_base.png" id="5_wowpa"]
+[ext_resource type="Script" uid="uid://dsijecui2r3re" path="res://Scenes/timer.gd" id="7_1l0tm"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_mxpfa"]
 
@@ -207,4 +208,25 @@ texture = ExtResource("5_wowpa")
 expand_mode = 2
 stretch_mode = 3
 
+[node name="TimerTouhut" type="Node" parent="." unique_id=950896830]
+script = ExtResource("7_1l0tm")
+
+[node name="Timer" type="Timer" parent="TimerTouhut" unique_id=1733630467]
+wait_time = 2.0
+one_shot = true
+
+[node name="Control" type="Control" parent="TimerTouhut" unique_id=1292160431]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="TimerText" type="RichTextLabel" parent="TimerTouhut/Control" unique_id=220559657]
+layout_mode = 0
+offset_left = -387.0
+offset_top = -288.0
+offset_right = -347.0
+offset_bottom = -248.0
+
 [connection signal="draw_culprit" from="NpcGenerator" to="FacePoster/FaceReveal" method="_on_npc_generator_draw_culprit"]
+[connection signal="timeout" from="TimerTouhut/Timer" to="." method="_on_timer_timeout"]

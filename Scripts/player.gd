@@ -36,7 +36,6 @@ func _physics_process(delta):
 		move_and_slide()
 
 func _process(delta):
-	print(nearby_npcs.size())
 	if Input.is_action_just_pressed("Interact") and nearby_npcs.size() > 0:
 		var npc = nearby_npcs[0]
 		npc.stop_movement()
