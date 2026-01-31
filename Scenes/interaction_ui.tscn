@@ -5,7 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://srg34ja8h8eo" path="res://Assets/BigMasks/fish.png" id="3_bov4e"]
 [ext_resource type="Script" uid="uid://djrls7gr0hb82" path="res://Scripts/mask.gd" id="4_bov4e"]
 
-[node name="InteractionUi" type="Control" unique_id=688916730 node_paths=PackedStringArray("hair", "eyes", "beard", "mask")]
+[node name="InteractionUi" type="Control" unique_id=688916730 node_paths=PackedStringArray("hair", "eyes", "beard", "mask", "win_text", "lose_text", "close_ui_button", "culprit_button", "reset_timer")]
 z_index = 1
 layout_mode = 3
 anchors_preset = 15
@@ -18,6 +18,11 @@ hair = NodePath("MarginContainer2/Hair")
 eyes = NodePath("MarginContainer2/Eyes")
 beard = NodePath("MarginContainer2/Beard")
 mask = NodePath("MarginContainer2/Mask")
+win_text = NodePath("MarginContainer3/WinText")
+lose_text = NodePath("MarginContainer3/LoseText")
+close_ui_button = NodePath("MarginContainer/VBoxContainer/CloseUI")
+culprit_button = NodePath("MarginContainer/VBoxContainer/CulpritButton")
+reset_timer = NodePath("Timer")
 
 [node name="ColorRect" type="ColorRect" parent="." unique_id=183251510]
 layout_mode = 1
@@ -96,4 +101,47 @@ texture = ExtResource("3_bov4e")
 stretch_mode = 3
 script = ExtResource("4_bov4e")
 
+[node name="MarginContainer3" type="MarginContainer" parent="." unique_id=512366701]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -40.0
+offset_bottom = 40.0
+grow_horizontal = 0
+theme_override_constants/margin_left = 40
+theme_override_constants/margin_top = 40
+theme_override_constants/margin_right = 40
+theme_override_constants/margin_bottom = 40
+
+[node name="WinText" type="RichTextLabel" parent="MarginContainer3" unique_id=2102079929]
+visible = false
+custom_minimum_size = Vector2(360, 0)
+layout_mode = 2
+theme_override_font_sizes/normal_font_size = 32
+theme_override_font_sizes/bold_font_size = 48
+bbcode_enabled = true
+text = "[b]Good job[/b]
+You found the culprit. The queen knighted you as the Sir Maskless the III"
+fit_content = true
+horizontal_alignment = 1
+
+[node name="LoseText" type="RichTextLabel" parent="MarginContainer3" unique_id=401295404]
+visible = false
+custom_minimum_size = Vector2(360, 0)
+layout_mode = 2
+theme_override_font_sizes/normal_font_size = 32
+theme_override_font_sizes/bold_font_size = 48
+bbcode_enabled = true
+text = "[b]You fool![/b]
+That is not the culprit. Queen is not happy. Beheading awaits."
+fit_content = true
+horizontal_alignment = 1
+
+[node name="Timer" type="Timer" parent="." unique_id=1435045649]
+wait_time = 5.0
+one_shot = true
+
+[connection signal="pressed" from="MarginContainer/VBoxContainer/CulpritButton" to="." method="_on_culprit_button_pressed"]
 [connection signal="pressed" from="MarginContainer/VBoxContainer/CloseUI" to="." method="_on_close_ui_pressed"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
