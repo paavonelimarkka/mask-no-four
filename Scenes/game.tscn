@@ -211,7 +211,7 @@ stretch_mode = 3
 script = ExtResource("7_1l0tm")
 
 [node name="Timer" type="Timer" parent="TimerTouhut" unique_id=1733630467]
-wait_time = 60.0
+wait_time = 30.0
 one_shot = true
 
 [node name="Control" type="Control" parent="TimerTouhut" unique_id=1292160431]
