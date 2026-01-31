@@ -19,6 +19,7 @@ size = Vector2(37, 39)
 script = ExtResource("1_3dryh")
 
 [node name="InteractionUi" parent="." unique_id=688916730 instance=ExtResource("1_wrm1d")]
+visible = false
 z_index = 10
 anchors_preset = 0
 anchor_right = 0.0
@@ -87,20 +88,42 @@ collision_layer = 3
 shape = SubResource("RectangleShape2D_3dryh")
 
 [node name="FaceReveal" type="Control" parent="FacePoster" unique_id=1177834526 node_paths=PackedStringArray("npc_generator", "hair", "eyes", "beard")]
+z_index = 6
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_top = -20.0
-offset_bottom = -20.0
+offset_left = 75.0
+offset_top = 75.0
+offset_right = 75.0
+offset_bottom = 75.0
 grow_horizontal = 2
 grow_vertical = 2
-scale = Vector2(5, 5)
 script = ExtResource("5_i6g32")
 npc_generator = NodePath("../../NpcGenerator")
 hair = NodePath("ColorRect/Hair")
 eyes = NodePath("ColorRect/Eyes")
 beard = NodePath("ColorRect/Beard")
+
+[node name="Label" type="Label" parent="FacePoster/FaceReveal" unique_id=22329575]
+z_index = 1
+layout_mode = 0
+offset_left = 21.0
+offset_top = -52.0
+offset_right = 269.0
+offset_bottom = -29.0
+text = "This is the culprit"
+horizontal_alignment = 1
+
+[node name="Label2" type="Label" parent="FacePoster/FaceReveal" unique_id=1530544310]
+z_index = 1
+layout_mode = 0
+offset_left = 21.0
+offset_top = 171.0
+offset_right = 269.0
+offset_bottom = 196.0
+text = "Find the culprit"
+horizontal_alignment = 1
 
 [node name="ColorRect" type="ColorRect" parent="FacePoster/FaceReveal" unique_id=1545209617]
 layout_mode = 1
@@ -109,6 +132,7 @@ offset_left = 19.599998
 offset_top = -53.6
 offset_right = 69.6
 offset_bottom = -3.5999985
+scale = Vector2(5, 5)
 color = Color(0.38, 0.3625833, 0.285, 1)
 
 [node name="Face" type="TextureRect" parent="FacePoster/FaceReveal/ColorRect" unique_id=226564408]
