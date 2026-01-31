@@ -1,5 +1,6 @@
 [gd_scene format=3 uid="uid://di3kcgn4m7a35"]
 
+[ext_resource type="Script" uid="uid://cx42li2h1gsbs" path="res://Scripts/game.gd" id="1_3dryh"]
 [ext_resource type="PackedScene" uid="uid://cg76re3787jjk" path="res://Scenes/player.tscn" id="1_ebmjs"]
 [ext_resource type="PackedScene" uid="uid://cqkmxol52hgso" path="res://Scenes/interaction_ui.tscn" id="1_wrm1d"]
 [ext_resource type="PackedScene" uid="uid://bv0872odn3gha" path="res://Scenes/npc_generator.tscn" id="3_3dryh"]
@@ -10,9 +11,9 @@
 size = Vector2(20, 10.066668)
 
 [node name="Game" type="Node2D" unique_id=1433320696]
+script = ExtResource("1_3dryh")
 
 [node name="InteractionUi" parent="." unique_id=688916730 instance=ExtResource("1_wrm1d")]
-visible = false
 z_index = 10
 anchors_preset = 0
 anchor_right = 0.0
