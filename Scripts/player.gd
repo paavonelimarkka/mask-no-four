@@ -18,22 +18,13 @@ func _on_interact_area_body_entered(body: Node2D) -> void:
 	if body.is_in_group("npc"):
 		nearby_npcs.append(body)
 	if body.is_in_group("poster"):
-<<<<<<< Updated upstream
-		print("osuin posteriin triggaa joku lärvi")
-=======
 		face_reveal.position = Vector2(0, 260)
 		nearby_npcs.append(body)
->>>>>>> Stashed changes
 
 func _on_interact_area_body_exited(body: Node2D) -> void:
 	nearby_npcs.erase(body)
 	if body.is_in_group("poster"):
-<<<<<<< Updated upstream
-		print ("lähdin pois lärvi pois")
-=======
 		face_reveal.position = Vector2(0, -20)
-		# tänne se naamataulujuttu visible
->>>>>>> Stashed changes
 
 func get_input():
 	var input_direction = Input.get_vector("Left", "Right", "Up", "Down")
