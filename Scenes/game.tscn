@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://di3kcgn4m7a35"]
 
 [ext_resource type="PackedScene" uid="uid://cg76re3787jjk" path="res://Scenes/player.tscn" id="1_ebmjs"]
+[ext_resource type="PackedScene" uid="uid://cqkmxol52hgso" path="res://Scenes/interaction_ui.tscn" id="1_wrm1d"]
 [ext_resource type="PackedScene" uid="uid://dyinydf272qmt" path="res://Scenes/npc.tscn" id="2_qxrlw"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_mxpfa"]
@@ -10,68 +11,74 @@ size = Vector2(20, 10.066668)
 
 [node name="Game" type="Node2D" unique_id=1433320696]
 
+[node name="InteractionUi" parent="." unique_id=688916730 instance=ExtResource("1_wrm1d")]
+
 [node name="Player" parent="." unique_id=1499838394 instance=ExtResource("1_ebmjs")]
 motion_mode = 1
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1737939196]
 
-[node name="Npc" parent="." unique_id=1502401715 instance=ExtResource("2_qxrlw")]
+[node name="NPCs" type="Node" parent="." unique_id=2051232819]
+
+[node name="Npc" parent="NPCs" unique_id=1502401715 instance=ExtResource("2_qxrlw")]
 position = Vector2(76, -84)
 motion_mode = 1
 slide_on_ceiling = false
 
-[node name="Npc2" parent="." unique_id=1515008331 instance=ExtResource("2_qxrlw")]
+[node name="Npc2" parent="NPCs" unique_id=1515008331 instance=ExtResource("2_qxrlw")]
 position = Vector2(-229, -137)
 motion_mode = 1
 slide_on_ceiling = false
 
-[node name="Npc3" parent="." unique_id=1113262484 instance=ExtResource("2_qxrlw")]
+[node name="Npc3" parent="NPCs" unique_id=1113262484 instance=ExtResource("2_qxrlw")]
 position = Vector2(158, -172)
 motion_mode = 1
 slide_on_ceiling = false
 
-[node name="Npc4" parent="." unique_id=1696017680 instance=ExtResource("2_qxrlw")]
+[node name="Npc4" parent="NPCs" unique_id=1696017680 instance=ExtResource("2_qxrlw")]
 position = Vector2(-237, 203)
 motion_mode = 1
 slide_on_ceiling = false
 
-[node name="Npc5" parent="." unique_id=780905391 instance=ExtResource("2_qxrlw")]
+[node name="Npc5" parent="NPCs" unique_id=780905391 instance=ExtResource("2_qxrlw")]
 position = Vector2(222, 153)
 motion_mode = 1
 slide_on_ceiling = false
 
-[node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=503072264]
+[node name="Boundaries" type="Node" parent="." unique_id=215849896]
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Boundaries" unique_id=503072264]
 position = Vector2(-415, -298)
 physics_material_override = SubResource("PhysicsMaterial_mxpfa")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" unique_id=1668087273]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Boundaries/StaticBody2D" unique_id=1668087273]
 position = Vector2(-591.00006, 303)
 scale = Vector2(60, 60)
 shape = SubResource("RectangleShape2D_10xcd")
 
-[node name="StaticBody2D2" type="StaticBody2D" parent="." unique_id=582488381]
+[node name="StaticBody2D2" type="StaticBody2D" parent="Boundaries" unique_id=582488381]
 position = Vector2(1588, -298)
 physics_material_override = SubResource("PhysicsMaterial_mxpfa")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D2" unique_id=496777121]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Boundaries/StaticBody2D2" unique_id=496777121]
 position = Vector2(-591.00006, 303)
 scale = Vector2(60, 60)
 shape = SubResource("RectangleShape2D_10xcd")
 
-[node name="StaticBody2D3" type="StaticBody2D" parent="." unique_id=701013815]
+[node name="StaticBody2D3" type="StaticBody2D" parent="Boundaries" unique_id=701013815]
 position = Vector2(633, -900)
 physics_material_override = SubResource("PhysicsMaterial_mxpfa")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D3" unique_id=1544835862]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Boundaries/StaticBody2D3" unique_id=1544835862]
 position = Vector2(-591.00006, 303)
 scale = Vector2(60, 60)
 shape = SubResource("RectangleShape2D_10xcd")
 
-[node name="StaticBody2D4" type="StaticBody2D" parent="." unique_id=1824694274]
+[node name="StaticBody2D4" type="StaticBody2D" parent="Boundaries" unique_id=1824694274]
 position = Vector2(633, 301)
 physics_material_override = SubResource("PhysicsMaterial_mxpfa")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D4" unique_id=286803365]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Boundaries/StaticBody2D4" unique_id=286803365]
 position = Vector2(-591.00006, 303)
 scale = Vector2(60, 60)
 shape = SubResource("RectangleShape2D_10xcd")

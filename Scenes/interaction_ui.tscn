@@ -1,0 +1,11 @@
+[gd_scene format=3 uid="uid://cqkmxol52hgso"]
+
+[node name="InteractionUi" type="Control" unique_id=688916730]
+visible = false
+layout_mode = 3
+anchors_preset = 0
+
+[node name="Tästä alkaa juhon containenr_helvetti" type="Container" parent="." unique_id=395931587]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
