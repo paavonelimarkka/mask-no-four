@@ -14,6 +14,10 @@ config/name="Who's Behind the Mask Number Four"
 run/main_scene="uid://di3kcgn4m7a35"
 config/features=PackedStringArray("4.6", "Forward Plus")
 
+[autoload]
+
+GameState="*uid://d3840gsotmw5q"
+
 [display]
 
 window/size/viewport_width=800
