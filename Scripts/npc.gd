@@ -39,5 +39,4 @@ func _physics_process(delta: float) -> void:
 		velocity = velocity.bounce(collision.get_normal()).normalized() * SPEED
 
 func stop_movement() -> void:
-	print("pysähyppäs")
 	is_moving = false
