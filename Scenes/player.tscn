@@ -1,12 +1,14 @@
 [gd_scene format=3 uid="uid://cg76re3787jjk"]
 
-[ext_resource type="Script" uid="uid://bdwkk7n36p5lb" path="res://Scenes/player.gd" id="1_v0iea"]
+[ext_resource type="Script" uid="uid://bdwkk7n36p5lb" path="res://Scripts/player.gd" id="1_v0iea"]
 
 [sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_f60y1"]
 size = Vector2(50, 50)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_v0iea"]
 size = Vector2(49.5, 49.5)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_v0iea"]
 
 [node name="Player" type="CharacterBody2D" unique_id=1499838394]
 script = ExtResource("1_v0iea")
@@ -17,3 +19,13 @@ texture = SubResource("PlaceholderTexture2D_f60y1")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1477880869]
 position = Vector2(-0.25, -0.25)
 shape = SubResource("RectangleShape2D_v0iea")
+
+[node name="InteractArea" type="Area2D" parent="." unique_id=563516467]
+collision_layer = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractArea" unique_id=1307768220]
+scale = Vector2(6, 6)
+shape = SubResource("CircleShape2D_v0iea")
+
+[connection signal="body_entered" from="InteractArea" to="." method="_on_interact_area_body_entered"]
+[connection signal="body_exited" from="InteractArea" to="." method="_on_interact_area_body_exited"]

@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://dyinydf272qmt"]
 
-[ext_resource type="Script" uid="uid://cptg65y4hkrds" path="res://Scenes/npc.gd" id="1_acqhf"]
+[ext_resource type="Script" uid="uid://cptg65y4hkrds" path="res://Scripts/npc.gd" id="1_acqhf"]
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_xxsvc"]
 
@@ -9,7 +9,8 @@ size = Vector2(50, 50)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_h1ryf"]
 
-[node name="Npc" type="CharacterBody2D" unique_id=1502401715]
+[node name="Npc" type="CharacterBody2D" unique_id=1502401715 groups=["npc"]]
+collision_layer = 3
 script = ExtResource("1_acqhf")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=337415709]
