@@ -10,6 +10,8 @@ var unique_ids: Array[String]
 @export var big_masks: Array[CompressedTexture2D]
 @export var small_masks: Array[CompressedTexture2D]
 
+signal draw_culprit(npc)
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	for i in max_npcs:
@@ -38,6 +40,10 @@ func _ready() -> void:
 				break
 		
 		npc_array.append(npc)
+	
+	var culprit_id = randi_range(0, npc_array.size() -1)
+	npc_array[culprit_id].culprit = true
+	emit_signal("draw_culprit", npc_array[culprit_id])
 	
 	for i in npc_array.size():
 		var angle := TAU * i / npc_array.size()

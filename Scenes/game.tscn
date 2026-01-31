@@ -4,6 +4,8 @@
 [ext_resource type="PackedScene" uid="uid://cg76re3787jjk" path="res://Scenes/player.tscn" id="1_ebmjs"]
 [ext_resource type="PackedScene" uid="uid://cqkmxol52hgso" path="res://Scenes/interaction_ui.tscn" id="1_wrm1d"]
 [ext_resource type="PackedScene" uid="uid://bv0872odn3gha" path="res://Scenes/npc_generator.tscn" id="3_3dryh"]
+[ext_resource type="Script" uid="uid://c0ge6v0ma18lu" path="res://Scripts/face_reveal.gd" id="5_i6g32"]
+[ext_resource type="Texture2D" uid="uid://bm11o6hs61pj6" path="res://Assets/Faces/face_base.png" id="5_wowpa"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_mxpfa"]
 
@@ -13,12 +15,11 @@ size = Vector2(20, 10.066668)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3dryh"]
 size = Vector2(37, 39)
 
-[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_3dryh"]
-
 [node name="Game" type="Node2D" unique_id=1433320696]
 script = ExtResource("1_3dryh")
 
 [node name="InteractionUi" parent="." unique_id=688916730 instance=ExtResource("1_wrm1d")]
+visible = false
 z_index = 10
 anchors_preset = 0
 anchor_right = 0.0
@@ -30,8 +31,10 @@ offset_bottom = 300.0
 grow_horizontal = 1
 grow_vertical = 1
 
-[node name="Player" parent="." unique_id=1499838394 instance=ExtResource("1_ebmjs")]
+[node name="Player" parent="." unique_id=1499838394 node_paths=PackedStringArray("face_reveal") instance=ExtResource("1_ebmjs")]
+position = Vector2(0, -230)
 motion_mode = 1
+face_reveal = NodePath("../FacePoster/FaceReveal")
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1737939196]
 
@@ -78,15 +81,120 @@ scale = Vector2(60, 60)
 shape = SubResource("RectangleShape2D_10xcd")
 
 [node name="FacePoster" type="StaticBody2D" parent="." unique_id=717642753 groups=["poster"]]
+<<<<<<< Updated upstream
 position = Vector2(0, -296)
 collision_layer = 3
+=======
+position = Vector2(0, -275)
+>>>>>>> Stashed changes
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="FacePoster" unique_id=1719573575 groups=["poster"]]
 shape = SubResource("RectangleShape2D_3dryh")
 
+<<<<<<< Updated upstream
 [node name="FacePosterImage" type="TextureRect" parent="FacePoster" unique_id=1912245386 groups=["poster"]]
 offset_left = -19.5
 offset_top = -19.5
 offset_right = 20.5
 offset_bottom = 20.5
 texture = SubResource("PlaceholderTexture2D_3dryh")
+=======
+[node name="FaceReveal" type="Control" parent="FacePoster" unique_id=1177834526 node_paths=PackedStringArray("npc_generator", "hair", "eyes", "beard")]
+layout_mode = 3
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -20.0
+offset_bottom = -20.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(5, 5)
+script = ExtResource("5_i6g32")
+npc_generator = NodePath("../../NpcGenerator")
+hair = NodePath("ColorRect/Hair")
+eyes = NodePath("ColorRect/Eyes")
+beard = NodePath("ColorRect/Beard")
+
+[node name="ColorRect" type="ColorRect" parent="FacePoster/FaceReveal" unique_id=1545209617]
+layout_mode = 1
+anchors_preset = -1
+offset_left = 19.599998
+offset_top = -53.6
+offset_right = 69.6
+offset_bottom = -3.5999985
+color = Color(0.38, 0.3625833, 0.285, 1)
+
+[node name="Face" type="TextureRect" parent="FacePoster/FaceReveal/ColorRect" unique_id=226564408]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("5_wowpa")
+expand_mode = 2
+stretch_mode = 3
+
+[node name="Hair" type="TextureRect" parent="FacePoster/FaceReveal/ColorRect" unique_id=511282047]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("5_wowpa")
+expand_mode = 2
+stretch_mode = 3
+
+[node name="Eyes" type="TextureRect" parent="FacePoster/FaceReveal/ColorRect" unique_id=557116368]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("5_wowpa")
+expand_mode = 2
+stretch_mode = 3
+
+[node name="Beard" type="TextureRect" parent="FacePoster/FaceReveal/ColorRect" unique_id=793122010]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("5_wowpa")
+expand_mode = 2
+stretch_mode = 3
+
+[node name="ColorRect" type="ColorRect" parent="FacePoster" unique_id=796506101]
+anchors_preset = -1
+offset_left = -25.0
+offset_top = -25.0
+offset_right = 25.0
+offset_bottom = 25.0
+color = Color(0.38, 0.3625833, 0.285, 1)
+
+[node name="TextureRect" type="TextureRect" parent="FacePoster/ColorRect" unique_id=1204039206]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("5_wowpa")
+expand_mode = 2
+stretch_mode = 3
+
+[connection signal="draw_culprit" from="NpcGenerator" to="FacePoster/FaceReveal" method="_on_npc_generator_draw_culprit"]
+>>>>>>> Stashed changes

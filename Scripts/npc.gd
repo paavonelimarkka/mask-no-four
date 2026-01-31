@@ -13,6 +13,7 @@ var beard: CompressedTexture2D
 var big_mask: CompressedTexture2D
 var small_mask: CompressedTexture2D
 var custom_modulate: Color
+var culprit = false
 
 func _ready() -> void:
 	direction = Vector2(randf_range(-1,1), randf_range(-1,1)).normalized()
