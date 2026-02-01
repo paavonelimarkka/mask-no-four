@@ -3,9 +3,9 @@
 [ext_resource type="Script" uid="uid://cx42li2h1gsbs" path="res://Scripts/game.gd" id="1_3dryh"]
 [ext_resource type="PackedScene" uid="uid://cg76re3787jjk" path="res://Scenes/player.tscn" id="1_ebmjs"]
 [ext_resource type="PackedScene" uid="uid://cqkmxol52hgso" path="res://Scenes/interaction_ui.tscn" id="1_wrm1d"]
-[ext_resource type="AudioStream" uid="uid://ilcx4flnwtiv" path="res://Assets/Sounds/mumbling1.ogg" id="2_ldgsr"]
+[ext_resource type="AudioStream" uid="uid://dwco71ekg75gw" path="res://Assets/Sounds/mumbling1_mixed.ogg" id="2_o5yvi"]
 [ext_resource type="PackedScene" uid="uid://bv0872odn3gha" path="res://Scenes/npc_generator.tscn" id="3_3dryh"]
-[ext_resource type="AudioStream" uid="uid://ce76qsd42ryyl" path="res://Assets/Sounds/mumbling2.ogg" id="3_o5yvi"]
+[ext_resource type="AudioStream" uid="uid://bjqs0vc3l3wub" path="res://Assets/Sounds/mumbling2_mixed.ogg" id="3_rku1e"]
 [ext_resource type="Script" uid="uid://c0ge6v0ma18lu" path="res://Scripts/face_reveal.gd" id="5_i6g32"]
 [ext_resource type="Texture2D" uid="uid://bm11o6hs61pj6" path="res://Assets/Faces/face_base.png" id="5_wowpa"]
 [ext_resource type="Script" path="res://Scenes/timer.gd" id="7_1l0tm"]
@@ -22,7 +22,7 @@ size = Vector2(37, 39)
 
 [node name="Game" type="Node2D" unique_id=1433320696 node_paths=PackedStringArray("SFXPlayers", "mumbling_timer", "lose_timer", "reset_timer")]
 script = ExtResource("1_3dryh")
-SFXStreams = Array[AudioStreamOggVorbis]([ExtResource("2_ldgsr"), ExtResource("3_o5yvi")])
+SFXStreams = Array[AudioStreamOggVorbis]([ExtResource("2_o5yvi"), ExtResource("3_rku1e")])
 SFXPlayers = [NodePath("AudioPlayers/Audio1"), NodePath("AudioPlayers/Audio2"), NodePath("AudioPlayers/Audio3"), NodePath("AudioPlayers/Audio4")]
 mumbling_timer = NodePath("AudioPlayers/MumblingTimer")
 lose_timer = NodePath("TimerTouhut/Timer")
@@ -220,7 +220,7 @@ stretch_mode = 3
 script = ExtResource("7_1l0tm")
 
 [node name="Timer" type="Timer" parent="TimerTouhut" unique_id=1733630467]
-wait_time = 30.0
+wait_time = 45.0
 one_shot = true
 
 [node name="ResetTimer" type="Timer" parent="TimerTouhut" unique_id=452861568]
@@ -234,11 +234,14 @@ offset_right = 40.0
 offset_bottom = 40.0
 
 [node name="TimerText" type="RichTextLabel" parent="TimerTouhut/Control" unique_id=220559657]
+z_index = 10
 layout_mode = 0
 offset_left = -387.0
 offset_top = -288.0
-offset_right = -347.0
-offset_bottom = -248.0
+offset_right = -291.0
+offset_bottom = -203.0
+theme_override_font_sizes/normal_font_size = 64
+fit_content = true
 
 [node name="Floor" type="Sprite2D" parent="." unique_id=560535869]
 z_index = -2
