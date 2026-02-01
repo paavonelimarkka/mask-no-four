@@ -24,6 +24,7 @@ func _ready() -> void:
 		npc.big_mask = big_masks[mask]
 		npc.small_mask = small_masks[mask]
 		npc.custom_modulate = Color(1, randf(), randf(), 1.0)
+		npc.jiggle_start_timer.wait_time = randf_range(0,1)
 		
 		while true:
 			hair = randi_range(0, hairs.size() - 1)

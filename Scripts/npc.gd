@@ -14,6 +14,8 @@ var big_mask: CompressedTexture2D
 var small_mask: CompressedTexture2D
 var custom_modulate: Color
 var culprit = false
+@export var start_moving_timer: Timer
+@export var jiggle_start_timer: Timer
 
 func _ready() -> void:
 	direction = Vector2(randf_range(-1,1), randf_range(-1,1)).normalized()
@@ -28,8 +30,6 @@ func _ready() -> void:
 	sprite.modulate = custom_modulate
 	sprites.add_child(sprite)
 	animation_player.current_animation = "jiggle"
-	animation_player.active = true
-
 
 func _physics_process(delta: float) -> void:
 	if (is_moving == true):
@@ -42,3 +42,12 @@ func _physics_process(delta: float) -> void:
 
 func stop_movement() -> void:
 	is_moving = false
+
+
+func _on_start_moving_timeout() -> void:
+	is_moving = true
+
+
+func _on_jiggle_start_timer_timeout() -> void:
+	print("Start jiggling")
+	animation_player.active = true

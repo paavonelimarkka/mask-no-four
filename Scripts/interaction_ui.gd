@@ -40,7 +40,7 @@ func _on_show_ui(npc: NPC):
 func _on_close_ui_pressed() -> void:
 	visible = false
 	player.can_move = true
-	last_npc.is_moving = true
+	last_npc.start_moving_timer.start()
 
 func _on_culprit_button_pressed() -> void:
 	close_ui_button.disabled = true
