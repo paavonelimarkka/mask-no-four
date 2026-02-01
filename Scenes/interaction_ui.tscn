@@ -2,10 +2,14 @@
 
 [ext_resource type="Script" uid="uid://bonbm87p4pimb" path="res://Scripts/interaction_ui.gd" id="1_qemkw"]
 [ext_resource type="Texture2D" uid="uid://bm11o6hs61pj6" path="res://Assets/Faces/face_base.png" id="2_s1w6p"]
+[ext_resource type="AudioStream" uid="uid://cv7iruu55yshx" path="res://Assets/Sounds/huh1.ogg" id="2_xehfi"]
+[ext_resource type="AudioStream" uid="uid://bsm1vmc8jlfn7" path="res://Assets/Sounds/huh2.ogg" id="3_2u3d0"]
 [ext_resource type="Texture2D" uid="uid://srg34ja8h8eo" path="res://Assets/BigMasks/fish.png" id="3_bov4e"]
 [ext_resource type="Script" uid="uid://djrls7gr0hb82" path="res://Scripts/mask.gd" id="4_bov4e"]
+[ext_resource type="AudioStream" uid="uid://dpggwe7q1reby" path="res://Assets/Sounds/huh3.ogg" id="4_t3trr"]
+[ext_resource type="AudioStream" uid="uid://bw2y043g1ymdf" path="res://Assets/Sounds/huh4.ogg" id="5_1a2yh"]
 
-[node name="InteractionUi" type="Control" unique_id=688916730 node_paths=PackedStringArray("hair", "eyes", "beard", "mask", "win_text", "lose_text", "close_ui_button", "culprit_button", "reset_timer")]
+[node name="InteractionUi" type="Control" unique_id=688916730 node_paths=PackedStringArray("hair", "eyes", "beard", "mask", "win_text", "lose_text", "close_ui_button", "culprit_button", "reset_timer", "huh_player")]
 z_index = 1
 layout_mode = 3
 anchors_preset = 15
@@ -23,6 +27,8 @@ lose_text = NodePath("MarginContainer3/LoseText")
 close_ui_button = NodePath("MarginContainer/VBoxContainer/CloseUI")
 culprit_button = NodePath("MarginContainer/VBoxContainer/CulpritButton")
 reset_timer = NodePath("Timer")
+huhs = Array[AudioStreamOggVorbis]([ExtResource("2_xehfi"), ExtResource("3_2u3d0"), ExtResource("4_t3trr"), ExtResource("5_1a2yh")])
+huh_player = NodePath("AudioStreamPlayer")
 
 [node name="ColorRect" type="ColorRect" parent="." unique_id=183251510]
 layout_mode = 1
@@ -142,6 +148,8 @@ horizontal_alignment = 1
 [node name="Timer" type="Timer" parent="." unique_id=1435045649]
 wait_time = 5.0
 one_shot = true
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=210104405]
 
 [connection signal="pressed" from="MarginContainer/VBoxContainer/CulpritButton" to="." method="_on_culprit_button_pressed"]
 [connection signal="pressed" from="MarginContainer/VBoxContainer/CloseUI" to="." method="_on_close_ui_pressed"]

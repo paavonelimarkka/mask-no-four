@@ -9,6 +9,8 @@ extends Control
 @export var close_ui_button: Button
 @export var culprit_button: Button
 @export var reset_timer: Timer
+@export var huhs: Array[AudioStreamOggVorbis]
+@export var huh_player: AudioStreamPlayer
 
 var player: Node
 var last_npc: Node
@@ -26,6 +28,9 @@ func _on_show_ui(npc: NPC):
 	mask.texture = npc.big_mask
 	mask.modulate = npc.custom_modulate
 	visible = true
+	huh_player.stream = huhs[randi_range(0, huhs.size() - 1)]
+	huh_player.play()
+	
 
 func _on_close_ui_pressed() -> void:
 	visible = false
