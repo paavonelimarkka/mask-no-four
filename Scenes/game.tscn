@@ -3,7 +3,9 @@
 [ext_resource type="Script" uid="uid://cx42li2h1gsbs" path="res://Scripts/game.gd" id="1_3dryh"]
 [ext_resource type="PackedScene" uid="uid://cg76re3787jjk" path="res://Scenes/player.tscn" id="1_ebmjs"]
 [ext_resource type="PackedScene" uid="uid://cqkmxol52hgso" path="res://Scenes/interaction_ui.tscn" id="1_wrm1d"]
+[ext_resource type="AudioStream" uid="uid://ilcx4flnwtiv" path="res://Assets/Sounds/mumbling1.ogg" id="2_ldgsr"]
 [ext_resource type="PackedScene" uid="uid://bv0872odn3gha" path="res://Scenes/npc_generator.tscn" id="3_3dryh"]
+[ext_resource type="AudioStream" uid="uid://ce76qsd42ryyl" path="res://Assets/Sounds/mumbling2.ogg" id="3_o5yvi"]
 [ext_resource type="Script" uid="uid://c0ge6v0ma18lu" path="res://Scripts/face_reveal.gd" id="5_i6g32"]
 [ext_resource type="Texture2D" uid="uid://bm11o6hs61pj6" path="res://Assets/Faces/face_base.png" id="5_wowpa"]
 [ext_resource type="Script" path="res://Scenes/timer.gd" id="7_1l0tm"]
@@ -17,10 +19,14 @@ size = Vector2(20, 10.066668)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3dryh"]
 size = Vector2(37, 39)
 
-[node name="Game" type="Node2D" unique_id=1433320696]
+[node name="Game" type="Node2D" unique_id=1433320696 node_paths=PackedStringArray("SFXPlayers", "mumbling_timer")]
 script = ExtResource("1_3dryh")
+SFXStreams = Array[AudioStreamOggVorbis]([ExtResource("2_ldgsr"), ExtResource("3_o5yvi")])
+SFXPlayers = [NodePath("AudioPlayers/Audio1"), NodePath("AudioPlayers/Audio2"), NodePath("AudioPlayers/Audio3"), NodePath("AudioPlayers/Audio4")]
+mumbling_timer = NodePath("AudioPlayers/MumblingTimer")
 
 [node name="InteractionUi" parent="." unique_id=688916730 instance=ExtResource("1_wrm1d")]
+visible = false
 z_index = 10
 anchors_preset = 0
 anchor_right = 0.0
@@ -234,5 +240,27 @@ position = Vector2(-5, 5)
 scale = Vector2(8, 8)
 texture = ExtResource("8_v158k")
 
+[node name="AudioPlayers" type="Node" parent="." unique_id=1622744093]
+
+[node name="MumblingTimer" type="Timer" parent="AudioPlayers" unique_id=1216164898]
+autostart = true
+
+[node name="Audio1" type="AudioStreamPlayer2D" parent="AudioPlayers" unique_id=1868504053]
+position = Vector2(-250, -150)
+
+[node name="Audio2" type="AudioStreamPlayer2D" parent="AudioPlayers" unique_id=802520342]
+position = Vector2(250, -150)
+
+[node name="Audio3" type="AudioStreamPlayer2D" parent="AudioPlayers" unique_id=11984811]
+position = Vector2(-250, 150)
+
+[node name="Audio4" type="AudioStreamPlayer2D" parent="AudioPlayers" unique_id=498236585]
+position = Vector2(250, 150)
+
 [connection signal="draw_culprit" from="NpcGenerator" to="FacePoster/FaceReveal" method="_on_npc_generator_draw_culprit"]
 [connection signal="timeout" from="TimerTouhut/Timer" to="." method="_on_timer_timeout"]
+[connection signal="timeout" from="AudioPlayers/MumblingTimer" to="." method="_on_mumbling_timer_timeout"]
+[connection signal="finished" from="AudioPlayers/Audio1" to="." method="_on_sfx_finished"]
+[connection signal="finished" from="AudioPlayers/Audio2" to="." method="_on_sfx_finished"]
+[connection signal="finished" from="AudioPlayers/Audio3" to="." method="_on_sfx_finished"]
+[connection signal="finished" from="AudioPlayers/Audio4" to="." method="_on_sfx_finished"]
