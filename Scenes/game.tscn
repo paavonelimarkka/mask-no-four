@@ -6,7 +6,8 @@
 [ext_resource type="PackedScene" uid="uid://bv0872odn3gha" path="res://Scenes/npc_generator.tscn" id="3_3dryh"]
 [ext_resource type="Script" uid="uid://c0ge6v0ma18lu" path="res://Scripts/face_reveal.gd" id="5_i6g32"]
 [ext_resource type="Texture2D" uid="uid://bm11o6hs61pj6" path="res://Assets/Faces/face_base.png" id="5_wowpa"]
-[ext_resource type="Script" uid="uid://dsijecui2r3re" path="res://Scenes/timer.gd" id="7_1l0tm"]
+[ext_resource type="Script" path="res://Scenes/timer.gd" id="7_1l0tm"]
+[ext_resource type="Texture2D" uid="uid://7kqnfdn3w0dj" path="res://Assets/floor.png" id="8_v158k"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_mxpfa"]
 
@@ -226,6 +227,12 @@ offset_left = -387.0
 offset_top = -288.0
 offset_right = -347.0
 offset_bottom = -248.0
+
+[node name="Floor" type="Sprite2D" parent="." unique_id=560535869]
+z_index = -2
+position = Vector2(-5, 5)
+scale = Vector2(8, 8)
+texture = ExtResource("8_v158k")
 
 [connection signal="draw_culprit" from="NpcGenerator" to="FacePoster/FaceReveal" method="_on_npc_generator_draw_culprit"]
 [connection signal="timeout" from="TimerTouhut/Timer" to="." method="_on_timer_timeout"]
