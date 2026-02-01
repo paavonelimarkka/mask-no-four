@@ -13,6 +13,7 @@ config_version=5
 config/name="Who's Behind the Mask Number Four"
 run/main_scene="uid://ddc3qeiha3o11"
 config/features=PackedStringArray("4.6", "Forward Plus")
+config/icon="uid://cxt6dx4b55yul"
 
 [autoload]
 

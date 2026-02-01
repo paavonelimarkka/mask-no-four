@@ -20,13 +20,14 @@ size = Vector2(20, 10.066668)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3dryh"]
 size = Vector2(37, 39)
 
-[node name="Game" type="Node2D" unique_id=1433320696 node_paths=PackedStringArray("SFXPlayers", "mumbling_timer", "lose_timer", "reset_timer")]
+[node name="Game" type="Node2D" unique_id=1433320696 node_paths=PackedStringArray("SFXPlayers", "mumbling_timer", "lose_timer", "reset_timer", "music_player")]
 script = ExtResource("1_3dryh")
 SFXStreams = Array[AudioStreamOggVorbis]([ExtResource("2_o5yvi"), ExtResource("3_rku1e")])
 SFXPlayers = [NodePath("AudioPlayers/Audio1"), NodePath("AudioPlayers/Audio2"), NodePath("AudioPlayers/Audio3"), NodePath("AudioPlayers/Audio4")]
 mumbling_timer = NodePath("AudioPlayers/MumblingTimer")
 lose_timer = NodePath("TimerTouhut/Timer")
 reset_timer = NodePath("TimerTouhut/ResetTimer")
+music_player = NodePath("AudioStreamPlayer")
 
 [node name="InteractionUi" parent="." unique_id=688916730 instance=ExtResource("1_wrm1d")]
 z_index = 10
@@ -48,6 +49,7 @@ face_reveal = NodePath("../FacePoster/FaceReveal")
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1737939196]
 
 [node name="NpcGenerator" parent="." unique_id=1511625558 instance=ExtResource("3_3dryh")]
+max_npcs = 15
 
 [node name="NPCs" type="Node" parent="." unique_id=2051232819]
 

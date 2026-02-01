@@ -11,6 +11,9 @@ extends Control
 @export var reset_timer: Timer
 @export var huhs: Array[AudioStreamOggVorbis]
 @export var huh_player: AudioStreamPlayer
+@export var win_player: AudioStreamPlayer
+@export var lose_player: AudioStreamPlayer
+
 
 signal stop_timer()
 
@@ -46,8 +49,10 @@ func _on_culprit_button_pressed() -> void:
 	stop_timer.emit()
 	if last_npc.culprit:
 		win_text.visible = true
+		win_player.play()
 	else:
 		lose_text.visible = true
+		lose_player.play()
 
 func _on_timer_timeout() -> void:
 	get_tree().change_scene_to_file("res://Scenes/start.tscn")

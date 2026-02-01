@@ -5,6 +5,7 @@ extends Node2D
 @export var mumbling_timer: Timer
 @export var lose_timer: Timer
 @export var reset_timer: Timer
+@export var music_player: AudioStreamPlayer
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -19,9 +20,7 @@ func _on_timer_timeout() -> void:
 	reset_timer.start()
 
 func _on_mumbling_timer_timeout() -> void:
-	print("Maybe play")
 	if randi_range(0, 3) >= 1:
-		print("Lets play")
 		mumbling_timer.stop()
 		var sfx_player = SFXPlayers[randi_range(0, SFXPlayers.size() - 1)]
 		sfx_player.stream = SFXStreams[randi_range(0, SFXStreams.size() - 1)]
@@ -35,3 +34,5 @@ func _on_reset_timer_timeout() -> void:
 
 func _on_interaction_ui_stop_timer() -> void:
 	lose_timer.stop()
+	music_player.stop()
+	

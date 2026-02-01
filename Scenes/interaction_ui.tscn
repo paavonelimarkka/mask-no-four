@@ -8,8 +8,10 @@
 [ext_resource type="Script" uid="uid://djrls7gr0hb82" path="res://Scripts/mask.gd" id="4_bov4e"]
 [ext_resource type="AudioStream" uid="uid://dpggwe7q1reby" path="res://Assets/Sounds/huh3.ogg" id="4_t3trr"]
 [ext_resource type="AudioStream" uid="uid://bw2y043g1ymdf" path="res://Assets/Sounds/huh4.ogg" id="5_1a2yh"]
+[ext_resource type="AudioStream" uid="uid://capciucvwjakw" path="res://Assets/Sounds/voitto.ogg" id="9_t3trr"]
+[ext_resource type="AudioStream" uid="uid://dkgku0vtwjrsf" path="res://Assets/Sounds/havio.ogg" id="10_1a2yh"]
 
-[node name="InteractionUi" type="Control" unique_id=688916730 node_paths=PackedStringArray("hair", "eyes", "beard", "mask", "win_text", "lose_text", "close_ui_button", "culprit_button", "reset_timer", "huh_player")]
+[node name="InteractionUi" type="Control" unique_id=688916730 node_paths=PackedStringArray("hair", "eyes", "beard", "mask", "win_text", "lose_text", "close_ui_button", "culprit_button", "reset_timer", "huh_player", "win_player", "lose_player")]
 z_index = 1
 layout_mode = 3
 anchors_preset = 15
@@ -29,6 +31,8 @@ culprit_button = NodePath("MarginContainer/VBoxContainer/CulpritButton")
 reset_timer = NodePath("Timer")
 huhs = Array[AudioStreamOggVorbis]([ExtResource("2_xehfi"), ExtResource("3_2u3d0"), ExtResource("4_t3trr"), ExtResource("5_1a2yh")])
 huh_player = NodePath("AudioStreamPlayer")
+win_player = NodePath("WinSFX")
+lose_player = NodePath("LoseSFX")
 
 [node name="ColorRect" type="ColorRect" parent="." unique_id=183251510]
 layout_mode = 1
@@ -150,6 +154,14 @@ wait_time = 5.0
 one_shot = true
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=210104405]
+
+[node name="WinSFX" type="AudioStreamPlayer" parent="." unique_id=2128035895]
+stream = ExtResource("9_t3trr")
+volume_db = -10.0
+
+[node name="LoseSFX" type="AudioStreamPlayer" parent="." unique_id=1972015564]
+stream = ExtResource("10_1a2yh")
+volume_db = -10.0
 
 [connection signal="pressed" from="MarginContainer/VBoxContainer/CulpritButton" to="." method="_on_culprit_button_pressed"]
 [connection signal="pressed" from="MarginContainer/VBoxContainer/CloseUI" to="." method="_on_close_ui_pressed"]
