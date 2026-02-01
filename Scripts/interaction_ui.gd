@@ -12,6 +12,8 @@ extends Control
 @export var huhs: Array[AudioStreamOggVorbis]
 @export var huh_player: AudioStreamPlayer
 
+signal stop_timer()
+
 var player: Node
 var last_npc: Node
 
@@ -41,11 +43,11 @@ func _on_culprit_button_pressed() -> void:
 	close_ui_button.disabled = true
 	culprit_button.disabled = true
 	reset_timer.start()
+	stop_timer.emit()
 	if last_npc.culprit:
 		win_text.visible = true
 	else:
 		lose_text.visible = true
-
 
 func _on_timer_timeout() -> void:
 	get_tree().change_scene_to_file("res://Scenes/start.tscn")

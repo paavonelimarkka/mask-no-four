@@ -10,6 +10,7 @@
 [ext_resource type="Texture2D" uid="uid://bm11o6hs61pj6" path="res://Assets/Faces/face_base.png" id="5_wowpa"]
 [ext_resource type="Script" path="res://Scenes/timer.gd" id="7_1l0tm"]
 [ext_resource type="Texture2D" uid="uid://7kqnfdn3w0dj" path="res://Assets/floor.png" id="8_v158k"]
+[ext_resource type="AudioStream" uid="uid://bi26csdpwfryn" path="res://Assets/Sounds/mysteerimusa.ogg" id="11_o5yvi"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_mxpfa"]
 
@@ -19,14 +20,15 @@ size = Vector2(20, 10.066668)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3dryh"]
 size = Vector2(37, 39)
 
-[node name="Game" type="Node2D" unique_id=1433320696 node_paths=PackedStringArray("SFXPlayers", "mumbling_timer")]
+[node name="Game" type="Node2D" unique_id=1433320696 node_paths=PackedStringArray("SFXPlayers", "mumbling_timer", "lose_timer", "reset_timer")]
 script = ExtResource("1_3dryh")
 SFXStreams = Array[AudioStreamOggVorbis]([ExtResource("2_ldgsr"), ExtResource("3_o5yvi")])
 SFXPlayers = [NodePath("AudioPlayers/Audio1"), NodePath("AudioPlayers/Audio2"), NodePath("AudioPlayers/Audio3"), NodePath("AudioPlayers/Audio4")]
 mumbling_timer = NodePath("AudioPlayers/MumblingTimer")
+lose_timer = NodePath("TimerTouhut/Timer")
+reset_timer = NodePath("TimerTouhut/ResetTimer")
 
 [node name="InteractionUi" parent="." unique_id=688916730 instance=ExtResource("1_wrm1d")]
-visible = false
 z_index = 10
 anchors_preset = 0
 anchor_right = 0.0
@@ -221,6 +223,10 @@ script = ExtResource("7_1l0tm")
 wait_time = 30.0
 one_shot = true
 
+[node name="ResetTimer" type="Timer" parent="TimerTouhut" unique_id=452861568]
+wait_time = 5.0
+one_shot = true
+
 [node name="Control" type="Control" parent="TimerTouhut" unique_id=1292160431]
 layout_mode = 3
 anchors_preset = 0
@@ -257,8 +263,57 @@ position = Vector2(-250, 150)
 [node name="Audio4" type="AudioStreamPlayer2D" parent="AudioPlayers" unique_id=498236585]
 position = Vector2(250, 150)
 
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=1260767310]
+stream = ExtResource("11_o5yvi")
+volume_db = -15.0
+autoplay = true
+
+[node name="LoseScreen" type="Control" parent="." unique_id=662574111]
+visible = false
+z_index = 30
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -400.0
+offset_top = -300.0
+offset_right = 400.0
+offset_bottom = 300.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="LoseScreen" unique_id=1731569878]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.33189335, 0.26880002, 0.56, 1)
+
+[node name="CenterContainer" type="CenterContainer" parent="LoseScreen" unique_id=1354628374]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="RichTextLabel" type="RichTextLabel" parent="LoseScreen/CenterContainer" unique_id=590852683]
+custom_minimum_size = Vector2(600, 0)
+layout_mode = 2
+theme_override_font_sizes/normal_font_size = 36
+theme_override_font_sizes/bold_font_size = 64
+bbcode_enabled = true
+text = "[b]You lost[/b]
+You did not find the culprit in time. You are a disgrace to the Queen. The chopping block awaits. Be beheaded."
+fit_content = true
+horizontal_alignment = 1
+
+[connection signal="stop_timer" from="InteractionUi" to="." method="_on_interaction_ui_stop_timer"]
 [connection signal="draw_culprit" from="NpcGenerator" to="FacePoster/FaceReveal" method="_on_npc_generator_draw_culprit"]
 [connection signal="timeout" from="TimerTouhut/Timer" to="." method="_on_timer_timeout"]
+[connection signal="timeout" from="TimerTouhut/ResetTimer" to="." method="_on_reset_timer_timeout"]
 [connection signal="timeout" from="AudioPlayers/MumblingTimer" to="." method="_on_mumbling_timer_timeout"]
 [connection signal="finished" from="AudioPlayers/Audio1" to="." method="_on_sfx_finished"]
 [connection signal="finished" from="AudioPlayers/Audio2" to="." method="_on_sfx_finished"]
